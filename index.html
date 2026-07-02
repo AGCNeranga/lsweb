@@ -598,48 +598,98 @@
                MOBILE FOOTER FIX (Replace existing footer code inside max-width: 768px)
                ========================================= */
             
-            /* 1. Reduce the massive desktop padding */
-            .footer { padding: 50px 0 20px; }
-            
-            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
-            .footer-about p { margin: 0 auto 20px; max-width: 100%; }
-            .footer-links a { justify-content: center; }
-            
-            /* 2. Center icons properly */
-            .social-links { justify-content: center; margin-top: 20px; }
-            .payment-methods { justify-content: center; margin-top: 15px; }
-            
-            /* 3. Fix the overlapping newsletter button by stacking them */
-            .newsletter-form { 
-                display: flex;
-                flex-direction: column; 
-                gap: 15px; 
-                margin: 0 auto 20px;
-                width: 100%; 
-            }
-            .newsletter-form input { 
-                padding: 16px 25px; /* Removes the huge 120px right padding */
-                width: 100%; 
-                text-align: center;
-            }
-            .newsletter-form button { 
-                position: relative; /* Takes it out of the input box */
-                right: auto; top: auto; bottom: auto;
-                width: 100%;
-                padding: 16px;
-                border-radius: 40px;
-            }
+           /* =========================================
+           MOBILE FOOTER BULLETPROOF FIX
+           (Replace existing footer code inside max-width: 768px)
+           ========================================= */
+        
+        .footer {
+            padding: 50px 20px 20px;
+            overflow: hidden; /* Prevents any horizontal scrolling */
+            width: 100%;
+            box-sizing: border-box;
+        }
 
-            /* 4. Fix the very bottom copyright and policy links area */
-            .footer-bottom { 
-                flex-direction: column; 
-                gap: 15px; 
-                text-align: center; 
-            }
-            .footer-bottom > div {
-                justify-content: center;
-                width: 100%;
-            }
+        /* Switch from Grid to Flexbox for perfect mobile centering */
+        .footer-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 40px;
+            width: 100%;
+        }
+
+        .footer-grid > div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .footer-about p {
+            margin: 0 auto 20px;
+            max-width: 100%;
+        }
+
+        /* Fix navigation & contact links alignment */
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 0;
+        }
+
+        .footer-links a {
+            justify-content: center; /* Centers the text and icons perfectly */
+            width: 100%;
+        }
+
+        /* Center social and payment icons */
+        .social-links, .payment-methods {
+            justify-content: center;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        /* Fix the Newsletter form overlapping & stretching */
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 350px; /* Keeps the form looking neat */
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            width: 100%;
+            padding: 16px 20px !important; /* Force overrides the huge desktop padding */
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .newsletter-form button {
+            position: relative; /* Removes desktop absolute placement */
+            right: auto; top: auto; bottom: auto;
+            width: 100%;
+            padding: 15px;
+            border-radius: 40px;
+        }
+
+        /* Footer Bottom (Copyright & Policies) */
+        .footer-bottom {
+            flex-direction: column;
+            gap: 15px;
+            text-align: center;
+            padding-top: 20px;
+        }
+        
+        .footer-bottom > div {
+            justify-content: center;
+            width: 100%;
+        }
     </style>
     </style>
 </head>
