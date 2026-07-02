@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Leisure Sports | Premium Betting Experience</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,175 +30,108 @@
         }
 
         /* =========================================
-           RESET & BASE STYLES
+           RESET & UNIVERSAL ADJUSTMENTS
            ========================================= */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        *, *::before, *::after { 
+            margin: 0; padding: 0; box-sizing: border-box; 
+        }
+        html, body { 
+            width: 100%; 
+            overflow-x: hidden; /* Stops any white gaps on the right */
+            scroll-behavior: smooth; 
+        }
         body {
             font-family: var(--font-body);
-            background-color: var(--white);
+            background-color: #01120a; /* Dark background to prevent white flashes */
             color: var(--dark);
-            overflow-x: hidden;
         }
         a { text-decoration: none; color: inherit; transition: var(--transition); }
+        img { max-width: 100%; height: auto; display: block; }
         
-        /* Default PC Container */
-        .container { max-width: 1300px; margin: 0 auto; padding: 0 20px; }
+        /* Auto-Adjusting Container */
+        .container { 
+            width: 100%; 
+            max-width: 1350px; 
+            margin: 0 auto; 
+            padding: 0 5%; /* Fluid padding for all devices */
+        }
 
-        /* Scroll Reveal Utility Classes */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s ease-out;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        /* Scroll Reveal */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* =========================================
            TOP BAR
            ========================================= */
         .top-bar {
-            background-color: #021a0f;
-            color: #94a3b8;
-            font-size: 0.8rem;
-            padding: 8px 0;
-            position: relative;
-            z-index: 1001;
-            font-weight: 500;
+            background-color: #021a0f; color: #94a3b8; font-size: 0.8rem;
+            padding: 10px 0; position: relative; z-index: 1001; font-weight: 500;
         }
-        .top-bar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .top-bar-left span, .top-bar-right span { margin-right: 20px; }
+        .top-bar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .top-bar span { margin-right: 15px; display: inline-flex; align-items: center; gap: 5px; }
         .top-bar a:hover { color: var(--vip-gold); }
-        .top-bar i { color: var(--vip-gold); margin-right: 5px; }
+        .top-bar i { color: var(--vip-gold); }
 
         /* =========================================
-           PREMIUM HEADER (Logo Left, Links Right)
+           PREMIUM HEADER
            ========================================= */
         .header {
-            position: absolute;
-            top: 35px;
-            left: 0; width: 100%;
-            z-index: 1000;
-            padding: 20px 0;
-            transition: var(--transition);
+            position: absolute; top: 40px; left: 0; width: 100%; z-index: 1000;
+            padding: 15px 0; transition: var(--transition);
             background: linear-gradient(to bottom, rgba(3, 43, 24, 0.95) 0%, rgba(3, 43, 24, 0) 100%);
         }
         .header.scrolled {
-            position: fixed;
-            top: 0;
-            background: rgba(3, 43, 24, 0.98);
-            backdrop-filter: blur(15px);
-            padding: 10px 0;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.5);
-            border-bottom: 1px solid rgba(241, 196, 15, 0.3);
-        }
-
-        /* Edge-to-edge container for header */
-        .header .container {
-            max-width: 100%;
-            padding: 0 40px; 
-        }
-
-        .nav-wrapper { 
-            display: flex; 
-            justify-content: space-between;
-            align-items: center; 
-            width: 100%;
+            position: fixed; top: 0; background: rgba(3, 43, 24, 0.98);
+            backdrop-filter: blur(15px); padding: 8px 0;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.5); border-bottom: 1px solid rgba(241, 196, 15, 0.3);
         }
         
-        /* Logo Radial Effect & Placement */
-        .logo-wrapper {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-            text-decoration: none;
-        }
-        
+        .header .container { display: flex; justify-content: space-between; align-items: center; }
+
+        .logo-wrapper { position: relative; display: inline-flex; align-items: center; padding: 5px; }
         .logo-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 130%; height: 130%;
-            background: radial-gradient(circle, rgba(241, 196, 15, 0.25) 0%, rgba(241, 196, 15, 0) 65%);
-            z-index: -1;
-            border-radius: 50%;
-            transition: var(--transition);
+            content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 140%; height: 140%; background: radial-gradient(circle, rgba(241, 196, 15, 0.2) 0%, rgba(241, 196, 15, 0) 65%);
+            z-index: -1; border-radius: 50%; transition: var(--transition);
         }
-        
-        .header.scrolled .logo-wrapper::before {
-            opacity: 0; 
-        }
-
-        .logo-wrapper img {
-            height: 65px; 
-            transition: var(--transition);
-            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.6));
-            position: relative;
-            z-index: 1;
-        }
+        .header.scrolled .logo-wrapper::before { opacity: 0; }
+        .logo-wrapper img { height: 60px; transition: var(--transition); filter: drop-shadow(0 4px 10px rgba(0,0,0,0.6)); }
         .header.scrolled .logo-wrapper img { height: 50px; }
         
         /* Navigation Links */
-        .nav-links { display: flex; gap: 35px; align-items: center; list-style: none; }
+        .nav-links { display: flex; gap: 30px; align-items: center; list-style: none; }
         .nav-links a {
-            font-family: var(--font-heading);
-            font-weight: 700; font-size: 13px; text-transform: uppercase;
+            font-family: var(--font-heading); font-weight: 700; font-size: 13px; text-transform: uppercase;
             letter-spacing: 2px; color: var(--white); position: relative; padding: 5px 0;
         }
         .nav-links a::after {
             content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
-            background-color: var(--vip-gold); transition: var(--transition);
-            box-shadow: 0 0 10px var(--vip-gold-glow);
+            background-color: var(--vip-gold); transition: var(--transition); box-shadow: 0 0 10px var(--vip-gold-glow);
         }
         .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
         .nav-links a:hover, .nav-links a.active { color: var(--vip-gold); }
 
-        .menu-btn { display: none; color: var(--white); font-size: 28px; cursor: pointer; background: none; border: none; z-index: 1002; position: relative;}
+        .menu-btn { display: none; color: var(--white); font-size: 28px; cursor: pointer; background: none; border: none; z-index: 1002; }
 
         /* =========================================
-           HERO SECTION (Auto Moving Slider)
+           HERO SECTION
            ========================================= */
         .hero {
-            height: 100vh; min-height: 600px;
             position: relative; display: flex; align-items: center; justify-content: center; text-align: center;
-            overflow: hidden; 
+            width: 100%; height: 100vh; min-height: 600px; overflow: hidden; 
         }
-
-        .slider-container {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
-        }
-
+        .slider-container, .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
         .slide {
-            position: absolute; 
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-size: cover; background-position: center;
-            opacity: 0; animation: fadeSlider 25s infinite;
-            background-blend-mode: multiply;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-size: cover; background-position: center; opacity: 0; animation: fadeSlider 25s infinite;
+            background-blend-mode: multiply; background-color: rgba(0, 0, 0, 0.5);
         }
-
-        .slide:nth-child(1) { animation-delay: 0s; }
-        .slide:nth-child(2) { animation-delay: 5s; }
-        .slide:nth-child(3) { animation-delay: 10s; }
-        .slide:nth-child(4) { animation-delay: 15s; }
+        .slide:nth-child(1) { animation-delay: 0s; } .slide:nth-child(2) { animation-delay: 5s; }
+        .slide:nth-child(3) { animation-delay: 10s; } .slide:nth-child(4) { animation-delay: 15s; }
         .slide:nth-child(5) { animation-delay: 20s; }
 
-        @keyframes fadeSlider {
-            0% { opacity: 0; } 10% { opacity: 1; }
-            20% { opacity: 1; } 30% { opacity: 0; }
-            100% { opacity: 0; }
-        }
+        @keyframes fadeSlider { 0% { opacity: 0; } 10% { opacity: 1; } 20% { opacity: 1; } 30% { opacity: 0; } 100% { opacity: 0; } }
 
-        .hero-content { position: relative; z-index: 2; width: 100%; max-width: 900px; padding: 0 20px; display: flex; flex-direction: column; align-items: center; margin-top: -50px; }
+        .hero-content { position: relative; z-index: 2; width: 100%; max-width: 900px; padding: 0 5%; display: flex; flex-direction: column; align-items: center; }
         
         .vip-badge {
             display: inline-block; background: rgba(241, 196, 15, 0.15); color: var(--vip-gold);
@@ -206,139 +139,94 @@
             font-weight: 700; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; 
             margin-bottom: 25px; backdrop-filter: blur(5px);
         }
-        .hero h1 {
-            font-family: var(--font-heading); font-size: 5rem; font-weight: 900;
-            line-height: 1.1; margin-bottom: 25px; color: var(--white);
-            text-shadow: 0 4px 10px rgba(0,0,0,0.9); text-transform: uppercase;
-        }
-        .hero h1 span {
-            background: linear-gradient(to right, var(--vip-gold), var(--vip-gold-light));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .hero p {
-            font-size: 1.25rem; font-weight: 500; margin-bottom: 45px; line-height: 1.8; 
-            color: #ffffff; text-shadow: 0 2px 6px rgba(0,0,0,0.9); max-width: 800px;
-        }
+        .hero h1 { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 5.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 20px; color: var(--white); text-shadow: 0 4px 10px rgba(0,0,0,0.9); text-transform: uppercase; }
+        .hero h1 span { background: linear-gradient(to right, var(--vip-gold), var(--vip-gold-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: clamp(1rem, 2vw, 1.3rem); font-weight: 500; margin-bottom: 40px; line-height: 1.8; color: #ffffff; text-shadow: 0 2px 6px rgba(0,0,0,0.9); max-width: 800px; }
 
-        .hero-buttons { display: flex; gap: 20px; justify-content: center; align-items: center; width: 100%; }
+        .hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; width: 100%; }
         
-        .btn-vip {
-            background: linear-gradient(45deg, var(--vip-gold), #ffd700);
-            color: var(--vip-dark-green); padding: 16px 40px; border-radius: 50px;
-            font-family: var(--font-heading); font-weight: 800; text-transform: uppercase;
-            letter-spacing: 1px; font-size: 15px; box-shadow: 0 10px 25px var(--vip-gold-glow);
-            transition: var(--transition); border: none; cursor: pointer; display: inline-flex; align-items: center;
+        .btn-vip, .btn-outline {
+            padding: 16px 35px; border-radius: 50px; font-family: var(--font-heading); font-weight: 800; 
+            text-transform: uppercase; letter-spacing: 1px; font-size: 14px; transition: var(--transition); 
+            cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
         }
-        .btn-vip i { margin-left: 10px; transition: transform 0.3s; }
+        .btn-vip { background: linear-gradient(45deg, var(--vip-gold), #ffd700); color: var(--vip-dark-green); box-shadow: 0 10px 25px var(--vip-gold-glow); border: none; }
         .btn-vip:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(241, 196, 15, 0.6); }
+        .btn-vip i { margin-left: 10px; transition: transform 0.3s; }
         .btn-vip:hover i { transform: translateX(5px); }
-
-        .btn-outline {
-            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);
-            color: var(--white); padding: 15px 38px; border-radius: 50px;
-            font-family: var(--font-heading); font-weight: 700; text-transform: uppercase;
-            letter-spacing: 1px; font-size: 15px; border: 2px solid rgba(255,255,255,0.5);
-            transition: var(--transition); cursor: pointer; display: inline-flex; align-items: center;
-        }
+        
+        .btn-outline { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); color: var(--white); border: 2px solid rgba(255,255,255,0.5); }
         .btn-outline:hover { background: var(--white); color: var(--vip-dark-green); border-color: var(--white); transform: translateY(-3px); }
 
-        /* =========================================
-           LIVE SPORTS TICKER
-           ========================================= */
+        /* LIVE SPORTS TICKER */
         .ticker-wrap {
-            position: absolute; bottom: 0; left: 0; width: 100%;
-            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px);
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: var(--white); padding: 10px 0; overflow: hidden; z-index: 10;
+            position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px);
+            border-top: 1px solid rgba(255,255,255,0.1); color: var(--white); padding: 10px 0; overflow: hidden; z-index: 10;
         }
-        .ticker-move {
-            display: inline-block; white-space: nowrap; padding-right: 100%; box-sizing: content-box;
-            animation: ticker 90s linear infinite; font-size: 0.9rem; font-weight: 500; letter-spacing: 1px;
-        }
+        .ticker-move { display: inline-block; white-space: nowrap; padding-right: 100%; animation: ticker 90s linear infinite; font-size: 0.9rem; font-weight: 500; }
         .ticker-move span { margin-right: 40px; }
         .ticker-move i { color: var(--vip-gold); margin-right: 8px; }
         .ticker-move strong { color: var(--vip-gold-light); font-family: var(--font-heading); }
-        @keyframes ticker {
-            0% { transform: translate3d(100vw, 0, 0); }
-            100% { transform: translate3d(-100%, 0, 0); }
-        }
+        @keyframes ticker { 0% { transform: translate3d(100vw, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
         /* =========================================
            ABOUT US SECTION
            ========================================= */
-        .about-section {
-            padding: 100px 0;
-            background: radial-gradient(circle at center, var(--vip-dark-green) 0%, #01120a 100%);
-            color: var(--white); position: relative; text-align: center;
-        }
-        .about-section::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
-            background: linear-gradient(to right, transparent, var(--vip-gold), transparent);
-        }
-        .about-content {
-            max-width: 1000px; margin: 0 auto;
-            background: rgba(255, 255, 255, 0.03); padding: 60px 40px;
-            border-radius: 20px; border: 1px solid rgba(241, 196, 15, 0.2);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.6); backdrop-filter: blur(10px);
-        }
-        .about-content h2 { font-family: var(--font-heading); font-size: 2.8rem; color: var(--vip-gold); text-transform: uppercase; margin-bottom: 30px; }
-        .about-content p { font-size: 1.1rem; line-height: 1.8; color: var(--text-light); margin-bottom: 20px; font-weight: 300; }
+        .about-section { padding: 100px 0; background: radial-gradient(circle at center, var(--vip-dark-green) 0%, #01120a 100%); color: var(--white); position: relative; text-align: center; }
+        .about-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(to right, transparent, var(--vip-gold), transparent); }
+        .about-content { max-width: 1000px; margin: 0 auto; background: rgba(255, 255, 255, 0.03); padding: 5% 8%; border-radius: 20px; border: 1px solid rgba(241, 196, 15, 0.2); box-shadow: 0 15px 40px rgba(0,0,0,0.6); backdrop-filter: blur(10px); }
+        .about-content h2 { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 2.8rem); color: var(--vip-gold); text-transform: uppercase; margin-bottom: 30px; }
+        .about-content p { font-size: 1.05rem; line-height: 1.8; color: var(--text-light); margin-bottom: 20px; font-weight: 300; }
         .about-content p strong { color: var(--white); font-weight: 600; }
         .about-content .highlight { color: var(--vip-gold-light); font-weight: 500; }
 
         /* =========================================
            STATS BANNER SECTION
            ========================================= */
-        .stats-banner {
-            background: linear-gradient(to bottom, #01120a 50%, #f8fafc 50%); 
-            padding: 0 20px; position: relative; z-index: 10;
-        }
+        .stats-banner { background: linear-gradient(to bottom, #01120a 50%, #f8fafc 50%); padding: 0 5%; position: relative; z-index: 10; width: 100%; }
         .stats-container {
-            max-width: 1200px; margin: 0 auto;
-            background-color: #0c1827; border-radius: 12px;
-            padding: 35px 30px; display: flex; justify-content: space-between;
-            align-items: center; flex-wrap: wrap; box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            max-width: 1200px; margin: 0 auto; background-color: #0c1827; border-radius: 12px; padding: 35px;
+            display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
-        .stat-item { display: flex; align-items: center; gap: 15px; }
-        .stat-icon { color: #dbb34b; font-size: 2.4rem; }
+        .stat-item { display: flex; align-items: center; gap: 15px; flex: 1 1 200px; min-width: 200px; justify-content: center; }
+        .stat-icon { color: #dbb34b; font-size: 2.2rem; }
         .stat-info { display: flex; flex-direction: column; text-align: left; }
-        .stat-number { font-family: var(--font-heading); font-size: 1.9rem; font-weight: 800; color: #ffffff; line-height: 1.1; }
+        .stat-number { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; color: #ffffff; line-height: 1.1; }
         .stat-text { font-size: 0.85rem; color: #cbd5e1; font-weight: 400; margin-top: 3px; }
 
         /* =========================================
-           SPORTS COVERAGE
+           SPORTS COVERAGE (AUTO-FIT GRID)
            ========================================= */
-        .coverage-section { padding: 120px 0; background-color: #f8fafc; }
-        .section-header { text-align: center; margin-bottom: 70px; display: flex; flex-direction: column; align-items: center; }
+        .coverage-section { padding: 100px 0; background-color: #f8fafc; }
+        .section-header { text-align: center; margin-bottom: 60px; display: flex; flex-direction: column; align-items: center; }
         .section-header .sub-title { color: var(--vip-green); font-weight: 700; letter-spacing: 3px; text-transform: uppercase; font-size: 14px; margin-bottom: 10px; }
-        .section-header h2 { font-family: var(--font-heading); font-size: 3.5rem; font-weight: 900; color: var(--dark); text-transform: uppercase; margin-bottom: 20px; }
+        .section-header h2 { font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 900; color: var(--dark); text-transform: uppercase; margin-bottom: 20px; line-height: 1.2; }
         .section-header .line { width: 80px; height: 4px; background: linear-gradient(to right, var(--vip-green), var(--vip-gold)); border-radius: 2px; }
 
-        .sports-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
-        .sport-card { position: relative; height: 450px; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.08); cursor: pointer; }
+        /* Magic Grid - Adjusts perfectly to any screen */
+        .sports-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; width: 100%; }
+        .sport-card { position: relative; height: 400px; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.1); cursor: pointer; }
         .sport-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
-        .sport-card::after {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to top, rgba(3,43,24,0.95) 0%, rgba(0,0,0,0) 70%); transition: var(--transition);
-        }
+        .sport-card::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(3,43,24,0.95) 0%, rgba(0,0,0,0) 70%); transition: var(--transition); }
         .sport-card:hover img { transform: scale(1.15); }
         .sport-card:hover::after { background: linear-gradient(to top, rgba(10,92,54,0.95) 0%, rgba(241,196,15,0.3) 100%); }
-        
-        .sport-info { position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px 25px 30px; z-index: 2; transition: var(--transition); text-align: left; }
-        .sport-info h3 { color: var(--vip-gold); font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 8px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
-        .sport-info p { color: var(--white); font-size: 0.95rem; font-weight: 300; opacity: 0.8; transition: var(--transition); transform: translateY(10px); }
+        .sport-info { position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px 20px; z-index: 2; transition: var(--transition); text-align: left; }
+        .sport-info h3 { color: var(--vip-gold); font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; text-transform: uppercase; margin-bottom: 8px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        .sport-info p { color: var(--white); font-size: 0.9rem; font-weight: 300; opacity: 0.8; transition: var(--transition); transform: translateY(10px); }
         .sport-card:hover .sport-info p { opacity: 1; transform: translateY(0); }
 
         /* =========================================
            VVIP FOOTER
            ========================================= */
-        .footer { background-color: var(--vip-dark-green); color: var(--white); padding: 100px 0 20px; position: relative; }
+        .footer { background-color: var(--vip-dark-green); color: var(--white); padding: 80px 0 20px; position: relative; width: 100%; }
         .footer::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(to right, var(--vip-green), var(--vip-gold)); }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; margin-bottom: 60px; }
-        .footer-logo img { height: 75px; margin-bottom: 25px; }
-        .footer-about p { color: #94a3b8; font-size: 0.95rem; line-height: 1.8; max-width: 90%; }
         
-        .footer-title { font-family: var(--font-heading); color: var(--white); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; margin-bottom: 25px; letter-spacing: 1px; }
+        /* Auto-adjusting Footer Grid */
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 50px; }
+        .footer-logo img { height: 60px; margin-bottom: 20px; }
+        .footer-about p { color: #94a3b8; font-size: 0.95rem; line-height: 1.8; }
+        
+        .footer-title { font-family: var(--font-heading); color: var(--white); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 1px; }
         .footer-links { list-style: none; padding: 0; }
         .footer-links li { margin-bottom: 12px; }
         .footer-links a { color: #94a3b8; font-size: 0.95rem; display: inline-flex; align-items: center; }
@@ -346,152 +234,59 @@
         .footer-links a:hover { color: var(--white); }
         .footer-links a:hover i { transform: translateX(5px); }
         
-        /* Premium Newsletter Form */
+        /* Newsletter */
         .newsletter p { color: #94a3b8; font-size: 0.9rem; margin-bottom: 15px; }
-        .newsletter-form { display: flex; position: relative; margin-bottom: 25px; width: 100%; }
-        .newsletter-form input {
-            width: 100%; padding: 18px 120px 18px 25px; border-radius: 40px; border: none;
-            background: rgba(255,255,255,0.05); color: white; outline: none; border: 1px solid rgba(255,255,255,0.15); transition: var(--transition);
-        }
+        .newsletter-form { display: flex; position: relative; margin-bottom: 20px; width: 100%; max-width: 350px;}
+        .newsletter-form input { width: 100%; padding: 15px 100px 15px 20px; border-radius: 40px; border: none; background: rgba(255,255,255,0.05); color: white; outline: none; border: 1px solid rgba(255,255,255,0.15); transition: var(--transition); }
         .newsletter-form input:focus { border-color: var(--vip-gold); background: rgba(255,255,255,0.1); }
-        .newsletter-form button {
-            position: absolute; right: 5px; top: 5px; bottom: 5px; height: auto;
-            background: linear-gradient(45deg, var(--vip-gold), #ffd700); color: var(--vip-dark-green); border: none;
-            border-radius: 35px; padding: 0 30px; font-weight: 800; cursor: pointer; transition: var(--transition); box-shadow: 0 4px 15px rgba(241, 196, 15, 0.3);
-        }
-        .newsletter-form button:hover { transform: scale(1.03); box-shadow: 0 6px 20px rgba(241, 196, 15, 0.6); }
+        .newsletter-form button { position: absolute; right: 5px; top: 5px; bottom: 5px; height: auto; background: linear-gradient(45deg, var(--vip-gold), #ffd700); color: var(--vip-dark-green); border: none; border-radius: 35px; padding: 0 20px; font-weight: 800; cursor: pointer; transition: var(--transition); }
+        .newsletter-form button:hover { transform: scale(1.03); }
 
-        .payment-methods { display: flex; gap: 15px; font-size: 24px; color: #64748b; margin-top: 10px; }
-        .social-links { display: flex; gap: 10px; margin-top: 25px; }
-        .social-links a {
-            display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: rgba(255,255,255,0.05);
-            border-radius: 50%; color: var(--white); border: 1px solid rgba(255,255,255,0.1);
-        }
+        .payment-methods { display: flex; gap: 15px; font-size: 22px; color: #64748b; margin-top: 10px; flex-wrap: wrap; }
+        .social-links { display: flex; gap: 10px; margin-top: 20px; }
+        .social-links a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 50%; color: var(--white); border: 1px solid rgba(255,255,255,0.1); }
         .social-links a:hover { background: var(--vip-gold); color: var(--vip-dark-green); border-color: var(--vip-gold); transform: translateY(-3px); }
         
-        .footer-bottom {
-            text-align: center; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.05);
-            color: #64748b; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;
-        }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); color: #64748b; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
 
-        /* =========================================
-           FLOATING ACTION BUTTON (FAB)
-           ========================================= */
+        /* Floating Action Buttons */
         .fab-container { position: fixed; bottom: 30px; right: 30px; z-index: 9999; display: flex; flex-direction: column; gap: 15px; align-items: center; }
-        
-        .scroll-top-btn {
-            width: 45px; height: 45px; background: var(--vip-dark-green); border: 2px solid var(--vip-gold);
-            color: var(--vip-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 20px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: var(--transition);
-            opacity: 0; visibility: hidden; transform: translateY(20px);
-        }
+        .scroll-top-btn { width: 45px; height: 45px; background: var(--vip-dark-green); border: 2px solid var(--vip-gold); color: var(--vip-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; cursor: pointer; opacity: 0; visibility: hidden; transform: translateY(20px); transition: var(--transition); }
         .scroll-top-btn.show { opacity: 1; visibility: visible; transform: translateY(0); }
-        .scroll-top-btn:hover { background: var(--vip-gold); color: var(--vip-dark-green); }
-
-        .fab-support {
-            width: 60px; height: 60px; background: linear-gradient(135deg, #25D366, #128C7E);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;
-            font-size: 30px; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); cursor: pointer;
-            transition: var(--transition); animation: pulse 2s infinite; text-decoration: none;
-        }
-        .fab-support:hover { transform: scale(1.1); box-shadow: 0 15px 35px rgba(37, 211, 102, 0.6); color: white;}
+        .fab-support { width: 60px; height: 60px; background: linear-gradient(135deg, #25D366, #128C7E); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 30px; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); text-decoration: none; animation: pulse 2s infinite; transition: var(--transition); }
+        .fab-support:hover { transform: scale(1.1); color: white; }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
 
         /* =========================================
-           RESPONSIVE (TV / ULTRA-WIDE)
+           RESPONSIVE OVERRIDES (TABLET & MOBILE)
            ========================================= */
-        @media (min-width: 1600px) {
-            .container { max-width: 1500px; }
-            .hero h1 { font-size: 6.5rem; }
-            .hero p { font-size: 1.5rem; max-width: 1000px; }
+        @media (max-width: 900px) {
+            .top-bar { display: none; }
+            .header { top: 0; padding: 12px 0; background: var(--vip-dark-green); }
+            .header.scrolled { padding: 10px 0; }
+            .menu-btn { display: block; color: var(--vip-gold); z-index: 1005; position: relative; }
+            
+            /* Slide-in Mobile Menu */
+            .nav-links {
+                position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
+                background: #021a0f; flex-direction: column; justify-content: flex-start;
+                padding-top: 80px; gap: 15px; box-shadow: -5px 0 25px rgba(0,0,0,0.8);
+                border-left: 1px solid rgba(241, 196, 15, 0.2); transition: right 0.4s ease; z-index: 1000;
+            }
+            .nav-links.active { right: 0; }
+            .nav-links li { width: 100%; text-align: center; }
+            .nav-links a { font-size: 1.1rem; padding: 12px 0; display: block; }
+            .nav-links .btn-vip { margin-top: 15px; width: 80%; justify-content: center; }
+            
+            .hero-buttons { flex-direction: column; width: 100%; }
+            .btn-vip, .btn-outline { width: 100%; max-width: 400px; }
+            .stats-banner { padding: 0; }
+            .stats-container { border-radius: 0; flex-direction: column; gap: 30px; padding: 40px 20px;}
+            .stat-item { width: 100%; justify-content: flex-start; padding-left: 15%; }
+            
+            .footer-bottom { flex-direction: column; gap: 10px; justify-content: center; }
+            .fab-support { width: 50px; height: 50px; font-size: 26px; }
         }
-
-       /* =========================================
-   RESPONSIVE (TABLET & MOBILE) FIXES
-   ========================================= */
-
-/* TABLET (Portrait & Landscape) */
-@media (max-width: 1024px) {
-    .container { max-width: 95%; }
-    .hero h1 { font-size: 3.8rem; }
-    .sports-grid { grid-template-columns: repeat(2, 1fr); }
-    .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
-    .stats-container { justify-content: space-around; gap: 25px; padding: 30px; }
-    .stat-item { width: calc(50% - 25px); }
-    .about-content { padding: 50px 30px; }
-}
-
-/* MOBILE DEVICES */
-@media (max-width: 768px) {
-    /* Top Bar Hide for Mobile */
-    .top-bar { display: none; }
-    
-    /* Header & Logo */
-    .header { top: 0; padding: 12px 0; background: var(--vip-dark-green); }
-    .header .container { padding: 0 20px; }
-    .logo-wrapper { margin-left: 0; padding: 5px; }
-    .logo-wrapper img { height: 45px; } /* Smaller logo for mobile */
-    .logo-wrapper::before { display: none; } /* Remove glow on mobile */
-    
-    /* Mobile Hamburger Menu Button */
-    .menu-btn { display: block; color: var(--vip-gold); font-size: 26px; z-index: 1005; position: relative; }
-    
-    /* Slide-in Navigation */
-    .nav-links {
-        position: fixed; top: 0; right: -100%; width: 280px;
-        height: 100vh; background: #021a0f;
-        flex-direction: column; justify-content: flex-start; padding-top: 90px; gap: 20px;
-        box-shadow: -5px 0 25px rgba(0,0,0,0.8); 
-        border-left: 1px solid rgba(241, 196, 15, 0.2); 
-        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1000;
-    }
-    .nav-links.active { right: 0; }
-    .nav-links li { width: 100%; text-align: center; }
-    .nav-links a { font-size: 1.1rem; padding: 12px 0; display: block; }
-    .nav-links .btn-vip { margin-top: 15px; width: 80%; justify-content: center; }
-    
-    /* Hero Section adjustments */
-    .hero { min-height: 100svh; padding-top: 80px; }
-    .hero-content { margin-top: 0; padding: 0 15px; }
-    .hero h1 { font-size: 2.6rem; margin-bottom: 15px; }
-    .hero p { font-size: 1.05rem; margin-bottom: 30px; }
-    .hero-buttons { flex-direction: column; width: 100%; gap: 15px; }
-    .btn-vip, .btn-outline { width: 100%; justify-content: center; padding: 14px 20px; }
-    
-    /* Stats & About sections */
-    .about-section { padding: 60px 0; }
-    .about-content h2 { font-size: 2rem; }
-    .about-content p { font-size: 0.95rem; }
-    
-    .stats-banner { padding: 0; }
-    .stats-container { border-radius: 0; padding: 30px 20px; flex-direction: column; gap: 25px; }
-    .stat-item { width: 100%; justify-content: flex-start; padding-left: 15%; }
-    
-    /* Sports Grid */
-    .coverage-section { padding: 60px 0; }
-    .section-header h2 { font-size: 2.2rem; }
-    .sports-grid { grid-template-columns: 1fr; gap: 20px; }
-    .sport-card { height: 320px; }
-    
-    /* Footer Fixes */
-    .footer { padding: 60px 0 20px; }
-    .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; margin-bottom: 40px; }
-    .footer-about p, .newsletter-form { margin: 0 auto 20px; max-width: 100%; }
-    .footer-links a { justify-content: center; }
-    .social-links, .payment-methods { justify-content: center; }
-    
-    .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
-    
-    /* Floating Buttons */
-    .fab-support { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 26px; }
-    .scroll-top-btn { width: 40px; height: 40px; font-size: 18px; }
-}
-
-/* SMALL MOBILE (Like iPhone SE) */
-@media (max-width: 400px) {
-    .stat-item { padding-left: 5%; }
-    .hero h1 { font-size: 2.2rem; }
-}
     </style>
 </head>
 <body>
@@ -510,8 +305,7 @@
     </div>
 
     <header class="header" id="header">
-        <div class="container nav-wrapper">
-            
+        <div class="container">
             <a href="#" class="logo-wrapper">
                 <img src="https://leisuresportsholdings.com/images/logolg.png" alt="Leisure Sports Logo">
             </a>
@@ -528,7 +322,6 @@
             </nav>
             
             <button class="menu-btn" id="menu-btn"><i class="fas fa-bars"></i></button>
-
         </div>
     </header>
 
@@ -557,15 +350,12 @@
         
         <div class="ticker-wrap">
             <div class="ticker-move">
-                <span><i class="fas fa-horse-head"></i> <strong>UK :</strong> Aintree</span>
                 <span><i class="fas fa-horse-head"></i> <strong>UK :</strong> Ascot</span>
-                <span><i class="fas fa-horse-head"></i> <strong>UK :</strong> Ayr</span>
-                <span><i class="fas fa-horse-head"></i> <strong>UK :</strong> Bangor-on-Dee</span>
-                <span><i class="fas fa-horse-head"></i> <strong>UK :</strong> Bath</span>
-                <span><i class="fas fa-horse-head"></i> <strong>UK :</strong> Beverley</span>
                 <span><i class="fas fa-dog"></i> <strong>GREYHOUNDS RACING:</strong> Live Now</span>
                 <span><i class="fas fa-cricket"></i> <strong>CRICKET RACING:</strong> AUS vs IND - In Play</span>
                 <span><i class="fas fa-futbol"></i> <strong>FOOTBALL:</strong> ARS vs MCI - 20:00 GMT</span>
+                <span><i class="fas fa-horse-head"></i> <strong>UK :</strong> Bath</span>
+                <span><i class="fas fa-horse-head"></i> <strong>UK :</strong> Beverley</span>
             </div>
         </div>
     </section>
@@ -576,7 +366,7 @@
                 <h2>The Leisure Sports Journey</h2>
                 <p><strong>Royal Gaming (PVT) LTD</strong>, operating under the brand <span class="highlight">"Leisure Sports,"</span> launched its operations in 2019 by acquiring a significant portion of the business from one of the only two live Sportsbook operators in Sri Lanka.</p>
                 <p>With a vision of becoming the best Sportsbook Operator in the Asian Sub-Continent, Leisure Sports aims to establish itself as the most customer-friendly operator in Sri Lanka within a short span of time.</p>
-                <p>Since inception, we have embraced a customer-first approach through initiatives like the <span class="highlight">"A Winner from a Loser - Cash Back Raffle Draw,"</span> "Winner to Win a Beer," and regular "Customer Meet Ups."</p>
+                <p>Since inception, we have embraced a customer-first approach through initiatives like the <span class="highlight">"A Winner from a Loser - Cash Back Raffle Draw."</span></p>
                 <p>We have cultivated a distinctive flavor and culture designed to challenge the traditional bookie—bringing you into a space filled with true excitement and joy to follow your favorite sport.</p>
             </div>
         </div>
@@ -606,17 +396,10 @@
                 </div>
             </div>
             <div class="stat-item">
-                <div class="stat-icon"><i class="fas fa-globe"></i></div>
-                <div class="stat-info">
-                    <span class="stat-number" style="font-size: 1.5rem;">Multiple</span>
-                    <span class="stat-text">Industries</span>
-                </div>
-            </div>
-            <div class="stat-item">
                 <div class="stat-icon"><i class="fas fa-shield-alt"></i></div>
                 <div class="stat-info">
                     <span class="stat-number"><span class="counter" data-target="3">0</span></span>
-                    <span class="stat-text">Generations of Leadership</span>
+                    <span class="stat-text">Generations</span>
                 </div>
             </div>
         </div>
@@ -638,7 +421,6 @@
                         <p>Experience the prestige of live International and Australian Group 1 Racing.</p>
                     </div>
                 </div>
-
                 <div class="sport-card reveal" style="transition-delay: 0.2s;">
                     <img src="https://assets.nationbuilder.com/ajp/pages/750/meta_images/original/grey_hound.jpg?1646971762" alt="Greyhound Racing">
                     <div class="sport-info">
@@ -646,7 +428,6 @@
                         <p>Fast-paced, high-frequency track action from the world's best dog tracks.</p>
                     </div>
                 </div>
-
                 <div class="sport-card reveal" style="transition-delay: 0.3s;">
                     <img src="https://www.kawarthadowns.com/wp-content/uploads/2024/01/6387bd3f26b4242795a43048_73BBD199-C55D-45FB-B056-750E7335E14A.jpeg" alt="Harness Racing">
                     <div class="sport-info">
@@ -654,7 +435,6 @@
                         <p>Global pacing and trotting events featuring top-tier drivers and standardbreds.</p>
                     </div>
                 </div>
-
                 <div class="sport-card reveal" style="transition-delay: 0.4s;">
                     <img src="https://republicpolicy.com/wp-content/uploads/2024/07/20180728-The18-Image-Most-Popular-Sports2.jpg" alt="Sports Stadium">
                     <div class="sport-info">
@@ -669,7 +449,6 @@
     <footer class="footer" id="contact">
         <div class="container">
             <div class="footer-grid">
-                
                 <div class="footer-about reveal">
                     <div class="footer-logo">
                         <img src="https://leisuresportsholdings.com/images/logolg.png" alt="Leisure Sports">
@@ -681,7 +460,6 @@
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-
                 <div class="reveal" style="transition-delay: 0.1s;">
                     <h4 class="footer-title">Navigation</h4>
                     <ul class="footer-links">
@@ -691,7 +469,6 @@
                         <li><a href="#providers"><i class="fas fa-chevron-right"></i> Our Providers</a></li>
                     </ul>
                 </div>
-
                 <div class="reveal" style="transition-delay: 0.2s;">
                     <h4 class="footer-title">Contact</h4>
                     <ul class="footer-links">
@@ -700,16 +477,13 @@
                         <li><a href="mailto:info@leisuresportsholdings.com"><i class="fas fa-envelope"></i> Email Support</a></li>
                     </ul>
                 </div>
-
                 <div class="newsletter reveal" style="transition-delay: 0.3s;">
                     <h4 class="footer-title">VIP Newsletter</h4>
-                    <p>Subscribe for exclusive odds, promotions, and cash-back event invites.</p>
-                    
+                    <p>Subscribe for exclusive odds and promotions.</p>
                     <form class="newsletter-form">
-                        <input type="email" placeholder="Your email address" required>
+                        <input type="email" placeholder="Your email" required>
                         <button type="submit">Join</button>
                     </form>
-                    
                     <h4 class="footer-title" style="font-size: 0.9rem; margin-top: 20px; margin-bottom: 10px;">Secure Payments</h4>
                     <div class="payment-methods">
                         <i class="fab fa-cc-visa" title="Visa"></i>
@@ -719,7 +493,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="footer-bottom">
                 <div>&copy; <span id="year"></span> Leisure Sports Holdings (PVT) Ltd. All Rights Reserved.</div>
                 <div style="display: flex; gap: 20px;">
@@ -730,33 +503,24 @@
         </div>
     </footer>
 
-   <div class="fab-container">
+    <div class="fab-container">
         <button id="scrollTopBtn" class="scroll-top-btn" title="Go to top">
             <i class="fas fa-chevron-up"></i>
         </button>
-        
         <a href="https://wa.me/94112118118" target="_blank" class="fab-support" title="VIP Support via WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
     </div>
 
     <script>
-        // 1. Dynamic Year for Copyright
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // 2. Sticky Header Logic
         const header = document.getElementById('header');
-        const topBarHeight = 35; 
-        
         window.addEventListener('scroll', () => {
-            if (window.scrollY > topBarHeight) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            if (window.scrollY > 35) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
         });
 
-        // 3. Mobile Menu Toggle
         const menuBtn = document.getElementById('menu-btn');
         const navLinks = document.getElementById('nav-links');
         const icon = menuBtn.querySelector('i');
@@ -764,59 +528,41 @@
         menuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             if(navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
+                icon.classList.remove('fa-bars'); icon.classList.add('fa-times');
             } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times'); icon.classList.add('fa-bars');
             }
         });
 
-        // Close Mobile Menu on Link Click
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times'); icon.classList.add('fa-bars');
             });
         });
 
-        // 4. Modern Scroll Reveal Animations
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15 
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
+        const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
+                    entry.target.classList.add('active'); obs.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.15 });
 
-        document.querySelectorAll('.reveal').forEach((el) => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
-        // 5. STATS NUMBER COUNTER ANIMATION
         const counters = document.querySelectorAll('.counter');
         const animateCounters = () => {
             counters.forEach(counter => {
                 counter.innerText = '0';
+                const target = +counter.getAttribute('data-target');
+                const inc = target / 60; 
                 const updateCount = () => {
-                    const target = +counter.getAttribute('data-target');
                     const count = +counter.innerText.replace(/,/g, '');
-                    const inc = target / 60; 
-
                     if (count < target) {
                         counter.innerText = Math.ceil(count + inc).toLocaleString();
                         setTimeout(updateCount, 35);
-                    } else {
-                        counter.innerText = target.toLocaleString();
-                    }
+                    } else counter.innerText = target.toLocaleString();
                 };
                 updateCount();
             });
@@ -824,33 +570,21 @@
 
         const statsSection = document.querySelector('.stats-container');
         if (statsSection) {
-            const statsObserver = new IntersectionObserver((entries, observer) => {
+            const statsObserver = new IntersectionObserver((entries, obs) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounters();
-                        observer.unobserve(entry.target);
-                    }
+                    if (entry.isIntersecting) { animateCounters(); obs.unobserve(entry.target); }
                 });
             }, { threshold: 0.5 }); 
             statsObserver.observe(statsSection);
         }
 
-        // 6. Scroll To Top Logic
         const scrollTopBtn = document.getElementById('scrollTopBtn');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) { 
-                scrollTopBtn.classList.add('show');
-            } else {
-                scrollTopBtn.classList.remove('show');
-            }
+            if (window.scrollY > 400) scrollTopBtn.classList.add('show');
+            else scrollTopBtn.classList.remove('show');
         });
 
-        scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
+        scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     </script>
 </body>
 </html>
