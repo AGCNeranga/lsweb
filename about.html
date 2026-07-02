@@ -1,1 +1,628 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>About Us | Leisure Sports</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><style> :root { --vip-green: #0a5c36; --vip-dark-green: #032b18; --vip-gold: #f1c40f; --vip-gold-light: #fce38a; --vip-gold-glow: rgba(241, 196, 15, 0.4); --text-light: #e2e8f0; --white: #ffffff; --dark: #0f172a; --font-heading: 'Montserrat', sans-serif; --font-body: 'Poppins', sans-serif; --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); } * { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; } body { font-family: var(--font-body); background-color: var(--white); color: var(--dark); overflow-x: hidden; } a { text-decoration: none; color: inherit; transition: var(--transition); } .container { max-width: 1300px; margin: 0 auto; padding: 0 20px; } .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; } .reveal.active { opacity: 1; transform: translateY(0); } .top-bar { background-color: #021a0f; color: #94a3b8; font-size: 0.8rem; padding: 8px 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1001; font-weight: 500; } .top-bar-left span, .top-bar-right span { margin-right: 20px; } .top-bar a:hover { color: var(--vip-gold); } .top-bar i { color: var(--vip-gold); margin-right: 5px; } .header { position: absolute; top: 35px; left: 0; width: 100%; z-index: 1000; padding: 20px 0; transition: var(--transition); background: linear-gradient(to bottom, rgba(3, 43, 24, 0.95) 0%, rgba(3, 43, 24, 0) 100%); } .header.scrolled { position: fixed; top: 0; background: rgba(3, 43, 24, 0.98); backdrop-filter: blur(15px); padding: 10px 0; box-shadow: 0 5px 30px rgba(0,0,0,0.5); border-bottom: 1px solid rgba(241, 196, 15, 0.3); } .header .container { max-width: 100%; padding: 0 40px; } .nav-wrapper { display: flex; justify-content: space-between; align-items: center; } .logo-wrapper { position: relative; display: inline-flex; align-items: center; justify-content: center; padding: 10px; margin-left: -190px; text-decoration: none; } .logo-wrapper::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 130%; height: 130%; background: radial-gradient(circle, rgba(241, 196, 15, 0.25) 0%, rgba(241, 196, 15, 0) 65%); z-index: -1; border-radius: 50%; transition: var(--transition); } .header.scrolled .logo-wrapper::before { opacity: 0; } .logo-wrapper img { height: 65px; transition: var(--transition); filter: drop-shadow(0 4px 10px rgba(0,0,0,0.6)); position: relative; z-index: 1; } .header.scrolled .logo-wrapper img { height: 50px; } .nav-links { display: flex; gap: 35px; align-items: center; list-style: none; } .nav-links a { font-family: var(--font-heading); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; color: var(--white); position: relative; padding: 5px 0; } .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--vip-gold); transition: var(--transition); box-shadow: 0 0 10px var(--vip-gold-glow); } .nav-links a:hover::after { width: 100%; } .nav-links a:hover { color: var(--vip-gold); } .btn-vip { background: linear-gradient(45deg, var(--vip-gold), #ffd700); color: var(--vip-dark-green); padding: 10px 25px; border-radius: 50px; font-family: var(--font-heading); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; font-size: 12px; box-shadow: 0 10px 25px var(--vip-gold-glow); transition: var(--transition); border: none; cursor: pointer; display: inline-flex; align-items: center; } .btn-vip:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(241, 196, 15, 0.6); } .menu-btn { display: none; color: var(--white); font-size: 28px; cursor: pointer; background: none; border: none; } .page-hero { height: 60vh; min-height: 500px; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; background: url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat; } .page-hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(3, 43, 24, 0.8) 0%, rgba(0, 0, 0, 0.7) 100%); z-index: 1; } .page-hero-content { position: relative; z-index: 2; margin-top: 50px; } .page-hero h1 { font-family: var(--font-heading); font-size: 4rem; font-weight: 900; color: var(--white); text-transform: uppercase; text-shadow: 0 4px 10px rgba(0,0,0,0.9); margin-bottom: 15px; } .page-hero h1 span { background: linear-gradient(to right, var(--vip-gold), var(--vip-gold-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; } .page-hero p { font-size: 1.2rem; color: #cbd5e1; font-weight: 400; letter-spacing: 1px; } .breadcrumb { margin-top: 25px; display: flex; justify-content: center; gap: 10px; color: var(--white); font-size: 0.9rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; } .breadcrumb a { color: var(--vip-gold); } .breadcrumb a:hover { color: var(--white); } .story-section { padding: 100px 0; background-color: #ffffff; } .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; } .story-content h2 { font-family: var(--font-heading); font-size: 2.8rem; font-weight: 900; color: var(--dark); text-transform: uppercase; margin-bottom: 25px; line-height: 1.2; } .story-content h2 span { color: var(--vip-green); } .story-content .line { width: 80px; height: 4px; background: linear-gradient(to right, var(--vip-green), var(--vip-gold)); border-radius: 2px; margin-bottom: 30px; } .story-content p { font-size: 1.1rem; line-height: 1.8; color: #475569; margin-bottom: 20px; } .story-content .highlight { color: var(--vip-green); font-weight: 600; } .story-image { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); } .story-image img { width: 100%; height: auto; display: block; transition: transform 0.5s; } .story-image:hover img { transform: scale(1.05); } .story-image::after { content: ''; position: absolute; inset: 0; border: 4px solid var(--vip-gold); border-radius: 20px; pointer-events: none; opacity: 0.5; transform: scale(0.95); transition: var(--transition); } .story-image:hover::after { transform: scale(1); opacity: 1; } .mv-section { padding: 100px 0; background: radial-gradient(circle at center, var(--vip-dark-green) 0%, #01120a 100%); color: var(--white); position: relative; } .mv-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(to right, transparent, var(--vip-gold), transparent); } .mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; } .mv-card { background: rgba(255, 255, 255, 0.03); padding: 50px; border-radius: 15px; border: 1px solid rgba(241, 196, 15, 0.15); border-top: 4px solid var(--vip-gold); backdrop-filter: blur(10px); transition: var(--transition); } .mv-card:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.05); box-shadow: 0 20px 40px rgba(0,0,0,0.5); border-color: rgba(241, 196, 15, 0.4); } .mv-icon { width: 70px; height: 70px; background: rgba(241, 196, 15, 0.1); color: var(--vip-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; margin-bottom: 25px; border: 1px solid rgba(241, 196, 15, 0.3); } .mv-card h3 { font-family: var(--font-heading); font-size: 2rem; color: var(--white); text-transform: uppercase; margin-bottom: 20px; } .mv-card p { font-size: 1.05rem; line-height: 1.8; color: #94a3b8; font-weight: 300; } .stats-banner { background: linear-gradient(to bottom, #01120a 50%, #f8fafc 50%); padding: 0 20px; position: relative; z-index: 10; } .stats-container { max-width: 1200px; margin: 0 auto; background-color: #0c1827; border-radius: 12px; padding: 35px 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; box-shadow: 0 15px 40px rgba(0,0,0,0.3); } .stat-item { display: flex; align-items: center; gap: 15px; } .stat-icon { color: #dbb34b; font-size: 2.4rem; } .stat-info { display: flex; flex-direction: column; text-align: left; } .stat-number { font-family: var(--font-heading); font-size: 1.9rem; font-weight: 800; color: #ffffff; line-height: 1.1; } .stat-text { font-size: 0.85rem; color: #cbd5e1; font-weight: 400; margin-top: 3px; } .values-section { padding: 120px 0 100px; background-color: #f8fafc; } .section-header { text-align: center; margin-bottom: 70px; display: flex; flex-direction: column; align-items: center; } .section-header .sub-title { color: var(--vip-green); font-weight: 700; letter-spacing: 3px; text-transform: uppercase; font-size: 14px; display: block; margin-bottom: 10px; } .section-header h2 { font-family: var(--font-heading); font-size: 3rem; font-weight: 900; color: var(--dark); text-transform: uppercase; margin-bottom: 20px; } .section-header .line { width: 80px; height: 4px; background: linear-gradient(to right, var(--vip-green), var(--vip-gold)); border-radius: 2px; } .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; } .value-card { background: var(--white); padding: 50px 30px; border-radius: 12px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: var(--transition); border-bottom: 3px solid transparent; } .value-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); border-bottom-color: var(--vip-gold); } .value-icon { font-size: 40px; color: var(--vip-green); margin-bottom: 25px; transition: var(--transition); } .value-card:hover .value-icon { color: var(--vip-gold); transform: scale(1.1); } .value-card h3 { font-family: var(--font-heading); font-size: 1.5rem; color: var(--dark); margin-bottom: 15px; font-weight: 800; text-transform: uppercase; } .value-card p { color: #64748b; font-size: 0.95rem; line-height: 1.7; } .footer { background-color: var(--vip-dark-green); color: var(--white); padding: 100px 0 20px; position: relative; } .footer::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(to right, var(--vip-green), var(--vip-gold)); } .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; margin-bottom: 60px; } .footer-logo img { height: 75px; margin-bottom: 25px; } .footer-about p { color: #94a3b8; font-size: 0.95rem; line-height: 1.8; max-width: 90%; } .footer-title { font-family: var(--font-heading); color: var(--white); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; margin-bottom: 25px; letter-spacing: 1px; } .footer-links list-style { none; } .footer-links li { margin-bottom: 12px; } .footer-links a { color: #94a3b8; font-size: 0.95rem; display: inline-flex; align-items: center; } .footer-links a i { margin-right: 10px; color: var(--vip-gold); font-size: 0.8rem; transition: var(--transition); } .footer-links a:hover { color: var(--white); } .footer-links a:hover i { transform: translateX(5px); } .newsletter p { color: #94a3b8; font-size: 0.9rem; margin-bottom: 15px; } .newsletter-form { display: flex; position: relative; margin-bottom: 25px; width: 100%; } .newsletter-form input { width: 100%; padding: 18px 120px 18px 25px; border-radius: 40px; border: none; background: rgba(255,255,255,0.05); color: white; outline: none; border: 1px solid rgba(255,255,255,0.15); transition: var(--transition); } .newsletter-form input:focus { border-color: var(--vip-gold); background: rgba(255,255,255,0.1); } .newsletter-form button { position: absolute; right: 5px; top: 5px; bottom: 5px; height: auto; background: linear-gradient(45deg, var(--vip-gold), #ffd700); color: var(--vip-dark-green); border: none; border-radius: 35px; padding: 0 30px; font-weight: 800; cursor: pointer; transition: var(--transition); box-shadow: 0 4px 15px rgba(241, 196, 15, 0.3); } .newsletter-form button:hover { transform: scale(1.03); box-shadow: 0 6px 20px rgba(241, 196, 15, 0.6); } .payment-methods { display: flex; gap: 15px; font-size: 24px; color: #64748b; margin-top: 10px; } .social-links { display: flex; gap: 10px; margin-top: 25px; } .social-links a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 50%; color: var(--white); border: 1px solid rgba(255,255,255,0.1); } .social-links a:hover { background: var(--vip-gold); color: var(--vip-dark-green); border-color: var(--vip-gold); transform: translateY(-3px); } .footer-bottom { text-align: center; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.05); color: #64748b; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center; } .fab-container { position: fixed; bottom: 30px; right: 30px; z-index: 9999; display: flex; flex-direction: column; gap: 15px; align-items: center; } .scroll-top-btn { width: 45px; height: 45px; background: var(--vip-dark-green); border: 2px solid var(--vip-gold); color: var(--vip-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: var(--transition); opacity: 0; visibility: hidden; transform: translateY(20px); } .scroll-top-btn.show { opacity: 1; visibility: visible; transform: translateY(0); } .scroll-top-btn:hover { background: var(--vip-gold); color: var(--vip-dark-green); } .fab-support { width: 60px; height: 60px; background: linear-gradient(135deg, #25D366, #128C7E); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 30px; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); cursor: pointer; transition: var(--transition); animation: pulse 2s infinite; text-decoration: none; } .fab-support:hover { transform: scale(1.1); box-shadow: 0 15px 35px rgba(37, 211, 102, 0.6); color: white;} @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } } @media (max-width: 1200px) { .story-grid, .mv-grid { gap: 30px; } .stats-container { justify-content: space-around; gap: 30px; padding: 30px; } .stat-item { width: calc(33.333% - 30px); } .footer-grid { grid-template-columns: repeat(2, 1fr); } } @media (max-width: 992px) { .story-grid, .mv-grid { grid-template-columns: 1fr; } .story-image { order: -1; margin-bottom: 30px; } .values-grid { grid-template-columns: repeat(2, 1fr); } .stat-item { width: calc(50% - 30px); } .page-hero h1 { font-size: 3rem; } } @media (max-width: 768px) { .top-bar { display: none; } .header { top: 0; } .menu-btn { display: block; z-index: 1001; } .header.scrolled .menu-btn { color: var(--vip-gold); } .nav-links { position: fixed; top: 0; right: -100%; width: 100%; max-width: 350px; height: 100vh; background: var(--vip-dark-green); flex-direction: column; justify-content: center; gap: 25px; box-shadow: -10px 0 30px rgba(0,0,0,0.5); border-left: 2px solid var(--vip-gold); transition: var(--transition); z-index: 1000; } .nav-links.active { right: 0; } .nav-links li { width: 100%; text-align: center; } .nav-links a { font-size: 1.2rem; display: block; } .nav-links .btn-vip { display: inline-flex; width: auto; margin-top: 20px; } .values-grid { grid-template-columns: 1fr; } .section-header h2 { font-size: 2.2rem; } .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 50px; } .footer-about p, .newsletter-form { margin: 0 auto 20px; max-width: 100%; } .footer-links a { justify-content: center; } .social-links, .payment-methods { justify-content: center; } .footer-bottom { flex-direction: column; gap: 15px; } .fab-support { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 24px; } } @media (max-width: 500px) { .stat-item { width: 100%; justify-content: flex-start; padding-left: 15%; } } </style></head><body><div class="top-bar"><div class="container" style="display: flex; justify-content: space-between;"><div class="top-bar-left"><span><i class="fas fa-phone-alt"></i><a href="tel:+94112118118">+94 11 2 118 118</a></span><span><i class="fas fa-envelope"></i><a href="mailto:info@leisuresportsholdings.com">info@leisuresportsholdings.com</a></span></div><div class="top-bar-right"><span><a href="#"><i class="fas fa-shield-alt"></i> Responsible Gaming</a></span><span><i class="fas fa-globe"></i> English</span></div></div></div><header class="header" id="header"><div class="container nav-wrapper"><a href="index.html" class="logo-wrapper"><img src="https://leisuresportsholdings.com/images/logolg.png" alt="Leisure Sports Logo"></a><nav><ul class="nav-links" id="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html" style="color: var(--vip-gold);">About</a></li><li><a href="coverage.html">Coverage</a></li><li><a href="providers.html">Providers</a></li><li><a href="contact.html">Contact</a></li><li class="nav-btn"><button class="btn-vip" style="padding: 10px 25px; font-size: 12px;">Login VIP</button></li></ul></nav><button class="menu-btn" id="menu-btn"><i class="fas fa-bars"></i></button></div></header><section class="page-hero"><div class="container"><div class="page-hero-content reveal"><h1>Our <span>Story</span></h1><p>Discover the legacy behind Sri Lanka's finest sportsbook experience.</p><div class="breadcrumb"><a href="index.html">Home</a><i class="fas fa-angle-right" style="margin-top: 2px;"></i><span>About Us</span></div></div></div></section><section class="story-section"><div class="container"><div class="story-grid"><div class="story-content reveal"><h2>The Journey of <br><span>Leisure Sports</span></h2><div class="line"></div><p><strong>Royal Gaming (PVT) LTD</strong>, operating under the renowned brand <span class="highlight">"Leisure Sports,"</span> launched its operations in 2019 by acquiring a significant portion of the business from one of the only two live Sportsbook operators in Sri Lanka.</p><p>Since our inception, we have fully embraced a customer-first philosophy. Through exciting community initiatives like the "A Winner from a Loser - Cash Back Raffle Draw", "Winner to Win a Beer", and our regular "Customer Meet Ups", Leisure Sports has rapidly gained immense acceptance among the majority of elite punters.</p><p>We have cultivated a distinctive flavor and culture deliberately designed to challenge the traditional bookie format—bringing you into a sophisticated space filled with true excitement and joy to follow your favorite sport.</p></div><div class="story-image reveal" style="transition-delay: 0.2s;"><img src="https://images.unsplash.com/photo-1518091043644-c1d44570a2c9?q=80&w=1000&auto=format&fit=crop" alt="Leisure Sports Premium Experience"></div></div></div></section><section class="mv-section"><div class="container"><div class="mv-grid"><div class="mv-card reveal"><div class="mv-icon"><i class="fas fa-bullseye"></i></div><h3>Our Mission</h3><p>To deliver an unparalleled, premium sports entertainment experience. We are committed to offering competitive odds, comprehensive global market coverage, and a highly secure, responsible gaming environment that prioritizes customer satisfaction above all else.</p></div><div class="mv-card reveal" style="transition-delay: 0.2s;"><div class="mv-icon"><i class="fas fa-eye"></i></div><h3>Our Vision</h3><p>To establish ourselves as the best and most customer-friendly Sportsbook Operator in Sri Lanka and across the Asian Sub-Continent. We aim to revolutionize the betting industry by merging traditional excitement with modern, transparent, and rewarding community practices.</p></div></div></div></section><section class="stats-banner"><div class="stats-container reveal"><div class="stat-item"><div class="stat-icon"><i class="fas fa-calendar-check"></i></div><div class="stat-info"><span class="stat-number"><span class="counter" data-target="75">0</span>+</span><span class="stat-text">Years of Excellence</span></div></div><div class="stat-item"><div class="stat-icon"><i class="fas fa-building"></i></div><div class="stat-info"><span class="stat-number"><span class="counter" data-target="15">0</span>+</span><span class="stat-text">Companies</span></div></div><div class="stat-item"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-info"><span class="stat-number"><span class="counter" data-target="2000">0</span>+</span><span class="stat-text">Employees</span></div></div><div class="stat-item"><div class="stat-icon"><i class="fas fa-globe"></i></div><div class="stat-info"><span class="stat-number" style="font-size: 1.5rem;">Multiple</span><span class="stat-text">Industries</span></div></div><div class="stat-item"><div class="stat-icon"><i class="fas fa-shield-alt"></i></div><div class="stat-info"><span class="stat-number"><span class="counter" data-target="3">0</span></span><span class="stat-text">Generations of Leadership</span></div></div></div></section><section class="values-section"><div class="container"><div class="section-header reveal"><span class="sub-title">Why Choose Us</span><h2>Our Core Values</h2><div class="line"></div></div><div class="values-grid"><div class="value-card reveal" style="transition-delay: 0.1s;"><div class="value-icon"><i class="fas fa-handshake"></i></div><h3>Customer First</h3><p>We treat our members like VIPs. Our operations, rewards, and support are entirely tailored to provide you with maximum value and satisfaction.</p></div><div class="value-card reveal" style="transition-delay: 0.2s;"><div class="value-icon"><i class="fas fa-shield-check"></i></div><h3>Integrity & Trust</h3><p>Operating with complete transparency, we ensure fair play, responsible gaming, and secure transactions for every member of our community.</p></div><div class="value-card reveal" style="transition-delay: 0.3s;"><div class="value-icon"><i class="fas fa-crown"></i></div><h3>Premium Experience</h3><p>From the ambiance of our meet-ups to the quality of our digital platform, we deliver a luxurious, elite sports betting environment.</p></div></div></div></section><footer class="footer" id="contact"><div class="container"><div class="footer-grid"><div class="footer-about reveal"><div class="footer-logo"><img src="https://leisuresportsholdings.com/images/logolg.png" alt="Leisure Sports"></div><p>Leisure Sports aims to establish itself as the most customer-friendly operator in Sri Lanka. Customers at Leisure, Enjoy Sports at Pleasure.</p><div class="social-links"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div></div><div class="reveal" style="transition-delay: 0.1s;"><h4 class="footer-title">Navigation</h4><ul class="footer-links" style="list-style: none; padding: 0;"><li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li><li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li><li><a href="index.html#coverage"><i class="fas fa-chevron-right"></i> Global Markets</a></li><li><a href="index.html#providers"><i class="fas fa-chevron-right"></i> Our Providers</a></li></ul></div><div class="reveal" style="transition-delay: 0.2s;"><h4 class="footer-title">Contact</h4><ul class="footer-links" style="list-style: none; padding: 0;"><li><a href="#"><i class="fas fa-map-marker-alt"></i> 77 Chatham St, Colombo</a></li><li><a href="tel:+94112118118"><i class="fas fa-phone"></i> +94 11 2 118 118</a></li><li><a href="mailto:info@leisuresportsholdings.com"><i class="fas fa-envelope"></i> Email Support</a></li></ul></div><div class="newsletter reveal" style="transition-delay: 0.3s;"><h4 class="footer-title">VIP Newsletter</h4><p>Subscribe for exclusive odds, promotions, and cash-back event invites.</p><form class="newsletter-form"><input type="email" placeholder="Your email address" required><button type="submit">Join</button></form><h4 class="footer-title" style="font-size: 0.9rem; margin-top: 20px; margin-bottom: 10px;">Secure Payments</h4><div class="payment-methods"><i class="fab fa-cc-visa" title="Visa"></i><i class="fab fa-cc-mastercard" title="Mastercard"></i><i class="fab fa-cc-paypal" title="PayPal"></i><i class="fab fa-bitcoin" title="Crypto"></i></div></div></div><div class="footer-bottom"><div>&copy; <span id="year"></span> Leisure Sports Holdings (PVT) Ltd. All Rights Reserved.</div><div style="display: flex; gap: 20px;"><a href="#" style="color: #94a3b8; transition: color 0.3s;" onmouseover="this.style.color='#f1c40f'" onmouseout="this.style.color='#94a3b8'">Privacy Policy</a><a href="#" style="color: #94a3b8; transition: color 0.3s;" onmouseover="this.style.color='#f1c40f'" onmouseout="this.style.color='#94a3b8'">Terms & Conditions</a></div></div></div></footer><div class="fab-container"><button id="scrollTopBtn" class="scroll-top-btn" title="Go to top"><i class="fas fa-chevron-up"></i></button><a href="https://wa.me/94112118118" target="_blank" class="fab-support" title="VIP Support via WhatsApp"><i class="fab fa-whatsapp"></i></a></div><script> document.getElementById('year').textContent = new Date().getFullYear(); const header = document.getElementById('header'); const topBarHeight = 35; window.addEventListener('scroll', () => { if (window.scrollY > topBarHeight) { header.classList.add('scrolled'); } else { header.classList.remove('scrolled'); } }); const menuBtn = document.getElementById('menu-btn'); const navLinks = document.getElementById('nav-links'); const icon = menuBtn.querySelector('i'); menuBtn.addEventListener('click', () => { navLinks.classList.toggle('active'); if(navLinks.classList.contains('active')) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); } else { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); } }); document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', () => { navLinks.classList.remove('active'); icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }); }); const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 }; const observer = new IntersectionObserver((entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); } }); }, observerOptions); document.querySelectorAll('.reveal').forEach((el) => { observer.observe(el); }); const counters = document.querySelectorAll('.counter'); const animateCounters = () => { counters.forEach(counter => { counter.innerText = '0'; const updateCount = () => { const target = +counter.getAttribute('data-target'); const count = +counter.innerText.replace(/,/g, ''); const inc = target / 60; if (count < target) { counter.innerText = Math.ceil(count + inc).toLocaleString(); setTimeout(updateCount, 35); } else { counter.innerText = target.toLocaleString(); } }; updateCount(); }); }; const statsSection = document.querySelector('.stats-container'); if (statsSection) { const statsObserver = new IntersectionObserver((entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { animateCounters(); observer.unobserve(entry.target); } }); }, { threshold: 0.5 }); statsObserver.observe(statsSection); } const scrollTopBtn = document.getElementById('scrollTopBtn'); window.addEventListener('scroll', () => { if (window.scrollY > 400) { scrollTopBtn.classList.add('show'); } else { scrollTopBtn.classList.remove('show'); } }); scrollTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); }); </script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>About Us | Leisure Sports</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           VVIP COLOR PALETTE & VARIABLES
+           ========================================= */
+        :root {
+            --vip-green: #0a5c36;      
+            --vip-dark-green: #032b18; 
+            --vip-gold: #f1c40f;       
+            --vip-gold-light: #fce38a;
+            --vip-gold-glow: rgba(241, 196, 15, 0.4);
+            --text-light: #e2e8f0;
+            --white: #ffffff;
+            --dark: #0f172a;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Poppins', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* =========================================
+           RESET & UNIVERSAL ADJUSTMENTS
+           ========================================= */
+        *, *::before, *::after { 
+            margin: 0; padding: 0; box-sizing: border-box; 
+        }
+        html, body { 
+            width: 100%; 
+            overflow-x: hidden; /* Stops any white gaps on the right */
+            scroll-behavior: smooth; 
+        }
+        body {
+            font-family: var(--font-body);
+            background-color: #01120a; /* Dark background to prevent white flashes */
+            color: var(--dark);
+        }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        img { max-width: 100%; height: auto; display: block; }
+        
+        /* Auto-Adjusting Container */
+        .container { 
+            width: 100%; 
+            max-width: 1350px; 
+            margin: 0 auto; 
+            padding: 0 5%; /* Fluid padding for all devices */
+        }
+
+        /* Scroll Reveal */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* =========================================
+           TOP BAR
+           ========================================= */
+        .top-bar {
+            background-color: #021a0f; color: #94a3b8; font-size: 0.8rem;
+            padding: 10px 0; position: relative; z-index: 1001; font-weight: 500;
+        }
+        .top-bar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .top-bar span { margin-right: 15px; display: inline-flex; align-items: center; gap: 5px; }
+        .top-bar a:hover { color: var(--vip-gold); }
+        .top-bar i { color: var(--vip-gold); }
+
+        /* =========================================
+           PREMIUM HEADER
+           ========================================= */
+        .header {
+            position: absolute; top: 40px; left: 0; width: 100%; z-index: 1000;
+            padding: 15px 0; transition: var(--transition);
+            background: linear-gradient(to bottom, rgba(3, 43, 24, 0.95) 0%, rgba(3, 43, 24, 0) 100%);
+        }
+        .header.scrolled {
+            position: fixed; top: 0; background: rgba(3, 43, 24, 0.98);
+            backdrop-filter: blur(15px); padding: 8px 0;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.5); border-bottom: 1px solid rgba(241, 196, 15, 0.3);
+        }
+        
+        .header .container { display: flex; justify-content: space-between; align-items: center; }
+
+        .logo-wrapper { position: relative; display: inline-flex; align-items: center; padding: 5px; }
+        .logo-wrapper::before {
+            content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 140%; height: 140%; background: radial-gradient(circle, rgba(241, 196, 15, 0.2) 0%, rgba(241, 196, 15, 0) 65%);
+            z-index: -1; border-radius: 50%; transition: var(--transition);
+        }
+        .header.scrolled .logo-wrapper::before { opacity: 0; }
+        .logo-wrapper img { height: 60px; transition: var(--transition); filter: drop-shadow(0 4px 10px rgba(0,0,0,0.6)); }
+        .header.scrolled .logo-wrapper img { height: 50px; }
+        
+        .nav-links { display: flex; gap: 30px; align-items: center; list-style: none; }
+        .nav-links a {
+            font-family: var(--font-heading); font-weight: 700; font-size: 13px; text-transform: uppercase;
+            letter-spacing: 2px; color: var(--white); position: relative; padding: 5px 0;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+            background-color: var(--vip-gold); transition: var(--transition); box-shadow: 0 0 10px var(--vip-gold-glow);
+        }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .nav-links a:hover, .nav-links a.active { color: var(--vip-gold); }
+
+        .btn-vip {
+            background: linear-gradient(45deg, var(--vip-gold), #ffd700);
+            color: var(--vip-dark-green); padding: 12px 25px; border-radius: 50px;
+            font-family: var(--font-heading); font-weight: 800; text-transform: uppercase;
+            letter-spacing: 1px; font-size: 13px; box-shadow: 0 10px 25px var(--vip-gold-glow);
+            transition: var(--transition); border: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+        }
+        .btn-vip:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(241, 196, 15, 0.6); }
+
+        .menu-btn { display: none; color: var(--white); font-size: 28px; cursor: pointer; background: none; border: none; z-index: 1002; }
+
+        /* =========================================
+           PAGE HERO BANNER
+           ========================================= */
+        .page-hero {
+            height: 60vh; min-height: 450px;
+            position: relative; display: flex; align-items: center; justify-content: center; text-align: center;
+            background: url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+        }
+        .page-hero::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(3, 43, 24, 0.85) 0%, rgba(1, 18, 10, 0.95) 100%);
+            z-index: 1;
+        }
+        .page-hero-content { position: relative; z-index: 2; margin-top: 40px; padding: 0 5%; width: 100%; }
+        .page-hero h1 {
+            font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900;
+            color: var(--white); text-transform: uppercase; text-shadow: 0 4px 10px rgba(0,0,0,0.9); margin-bottom: 15px;
+        }
+        .page-hero h1 span { background: linear-gradient(to right, var(--vip-gold), var(--vip-gold-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .page-hero p { font-size: clamp(1rem, 2vw, 1.2rem); color: #cbd5e1; font-weight: 400; letter-spacing: 1px; }
+        .breadcrumb {
+            margin-top: 25px; display: flex; justify-content: center; gap: 10px; color: var(--white);
+            font-size: 0.9rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .breadcrumb a { color: var(--vip-gold); }
+        .breadcrumb a:hover { color: var(--white); }
+
+        /* =========================================
+           OUR STORY SECTION
+           ========================================= */
+        .story-section { padding: 100px 0; background-color: #ffffff; }
+        .story-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 60px; align-items: center; }
+        .story-content h2 {
+            font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 900;
+            color: var(--dark); text-transform: uppercase; margin-bottom: 25px; line-height: 1.2;
+        }
+        .story-content h2 span { color: var(--vip-green); }
+        .story-content .line { width: 80px; height: 4px; background: linear-gradient(to right, var(--vip-green), var(--vip-gold)); border-radius: 2px; margin-bottom: 30px; }
+        .story-content p { font-size: 1.05rem; line-height: 1.8; color: #475569; margin-bottom: 20px; }
+        .story-content .highlight { color: var(--vip-green); font-weight: 600; }
+        .story-image { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); }
+        .story-image img { width: 100%; height: auto; display: block; transition: transform 0.5s; }
+        .story-image:hover img { transform: scale(1.05); }
+        .story-image::after {
+            content: ''; position: absolute; inset: 0; border: 4px solid var(--vip-gold); border-radius: 20px;
+            pointer-events: none; opacity: 0.5; transform: scale(0.95); transition: var(--transition);
+        }
+        .story-image:hover::after { transform: scale(1); opacity: 1; }
+
+        /* =========================================
+           MISSION & VISION
+           ========================================= */
+        .mv-section {
+            padding: 100px 0; background: radial-gradient(circle at center, var(--vip-dark-green) 0%, #01120a 100%);
+            color: var(--white); position: relative;
+        }
+        .mv-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(to right, transparent, var(--vip-gold), transparent); }
+        .mv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        .mv-card {
+            background: rgba(255, 255, 255, 0.03); padding: 50px 40px; border-radius: 15px;
+            border: 1px solid rgba(241, 196, 15, 0.15); border-top: 4px solid var(--vip-gold);
+            backdrop-filter: blur(10px); transition: var(--transition);
+        }
+        .mv-card:hover {
+            transform: translateY(-10px); background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5); border-color: rgba(241, 196, 15, 0.4);
+        }
+        .mv-icon {
+            width: 70px; height: 70px; background: rgba(241, 196, 15, 0.1); color: var(--vip-gold);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 30px; margin-bottom: 25px; border: 1px solid rgba(241, 196, 15, 0.3);
+        }
+        .mv-card h3 { font-family: var(--font-heading); font-size: 1.8rem; color: var(--white); text-transform: uppercase; margin-bottom: 20px; }
+        .mv-card p { font-size: 1.05rem; line-height: 1.8; color: #94a3b8; font-weight: 300; }
+
+        /* =========================================
+           STATS BANNER SECTION (Animated)
+           ========================================= */
+        .stats-banner { background: linear-gradient(to bottom, #01120a 50%, #f8fafc 50%); padding: 0 5%; position: relative; z-index: 10; width: 100%; }
+        .stats-container {
+            max-width: 1200px; margin: 0 auto; background-color: #0c1827; border-radius: 12px; padding: 35px;
+            display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        .stat-item { display: flex; align-items: center; gap: 15px; flex: 1 1 200px; min-width: 200px; justify-content: center; }
+        .stat-icon { color: #dbb34b; font-size: 2.2rem; }
+        .stat-info { display: flex; flex-direction: column; text-align: left; }
+        .stat-number { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; color: #ffffff; line-height: 1.1; }
+        .stat-text { font-size: 0.85rem; color: #cbd5e1; font-weight: 400; margin-top: 3px; }
+
+        /* =========================================
+           CORE VALUES SECTION
+           ========================================= */
+        .values-section { padding: 120px 0 100px; background-color: #f8fafc; }
+        .section-header { text-align: center; margin-bottom: 60px; display: flex; flex-direction: column; align-items: center; }
+        .section-header .sub-title { color: var(--vip-green); font-weight: 700; letter-spacing: 3px; text-transform: uppercase; font-size: 14px; display: block; margin-bottom: 10px; }
+        .section-header h2 { font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 900; color: var(--dark); text-transform: uppercase; margin-bottom: 20px; line-height: 1.2; }
+        .section-header .line { width: 80px; height: 4px; background: linear-gradient(to right, var(--vip-green), var(--vip-gold)); border-radius: 2px; }
+        
+        .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .value-card {
+            background: var(--white); padding: 50px 30px; border-radius: 12px; text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: var(--transition); border-bottom: 3px solid transparent;
+        }
+        .value-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); border-bottom-color: var(--vip-gold); }
+        .value-icon { font-size: 40px; color: var(--vip-green); margin-bottom: 25px; transition: var(--transition); }
+        .value-card:hover .value-icon { color: var(--vip-gold); transform: scale(1.1); }
+        .value-card h3 { font-family: var(--font-heading); font-size: 1.4rem; color: var(--dark); margin-bottom: 15px; font-weight: 800; text-transform: uppercase; }
+        .value-card p { color: #64748b; font-size: 0.95rem; line-height: 1.7; }
+
+        /* =========================================
+           VVIP FOOTER
+           ========================================= */
+        .footer { background-color: var(--vip-dark-green); color: var(--white); padding: 80px 0 20px; position: relative; width: 100%; }
+        .footer::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(to right, var(--vip-green), var(--vip-gold)); }
+        
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 50px; }
+        .footer-logo img { height: 60px; margin-bottom: 20px; }
+        .footer-about p { color: #94a3b8; font-size: 0.95rem; line-height: 1.8; }
+        
+        .footer-title { font-family: var(--font-heading); color: var(--white); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 1px; }
+        .footer-links { list-style: none; padding: 0; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #94a3b8; font-size: 0.95rem; display: inline-flex; align-items: center; }
+        .footer-links a i { margin-right: 10px; color: var(--vip-gold); font-size: 0.8rem; transition: var(--transition); }
+        .footer-links a:hover { color: var(--white); }
+        .footer-links a:hover i { transform: translateX(5px); }
+        
+        .newsletter p { color: #94a3b8; font-size: 0.9rem; margin-bottom: 15px; }
+        .newsletter-form { display: flex; position: relative; margin-bottom: 20px; width: 100%; max-width: 350px;}
+        .newsletter-form input { width: 100%; padding: 15px 100px 15px 20px; border-radius: 40px; border: none; background: rgba(255,255,255,0.05); color: white; outline: none; border: 1px solid rgba(255,255,255,0.15); transition: var(--transition); }
+        .newsletter-form input:focus { border-color: var(--vip-gold); background: rgba(255,255,255,0.1); }
+        .newsletter-form button { position: absolute; right: 5px; top: 5px; bottom: 5px; height: auto; background: linear-gradient(45deg, var(--vip-gold), #ffd700); color: var(--vip-dark-green); border: none; border-radius: 35px; padding: 0 20px; font-weight: 800; cursor: pointer; transition: var(--transition); }
+        .newsletter-form button:hover { transform: scale(1.03); }
+
+        .payment-methods { display: flex; gap: 15px; font-size: 22px; color: #64748b; margin-top: 10px; flex-wrap: wrap; }
+        .social-links { display: flex; gap: 10px; margin-top: 20px; }
+        .social-links a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 50%; color: var(--white); border: 1px solid rgba(255,255,255,0.1); }
+        .social-links a:hover { background: var(--vip-gold); color: var(--vip-dark-green); border-color: var(--vip-gold); transform: translateY(-3px); }
+        
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); color: #64748b; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+
+        /* =========================================
+           FLOATING ACTION BUTTONS
+           ========================================= */
+        .fab-container { position: fixed; bottom: 30px; right: 30px; z-index: 9999; display: flex; flex-direction: column; gap: 15px; align-items: center; }
+        .scroll-top-btn { width: 45px; height: 45px; background: var(--vip-dark-green); border: 2px solid var(--vip-gold); color: var(--vip-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; cursor: pointer; opacity: 0; visibility: hidden; transform: translateY(20px); transition: var(--transition); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .scroll-top-btn.show { opacity: 1; visibility: visible; transform: translateY(0); }
+        .scroll-top-btn:hover { background: var(--vip-gold); color: var(--vip-dark-green); }
+        .fab-support { width: 60px; height: 60px; background: linear-gradient(135deg, #25D366, #128C7E); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 30px; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); text-decoration: none; animation: pulse 2s infinite; transition: var(--transition); }
+        .fab-support:hover { transform: scale(1.1); color: white; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+
+        /* =========================================
+           RESPONSIVE OVERRIDES (TABLET & MOBILE)
+           ========================================= */
+        @media (max-width: 900px) {
+            .top-bar { display: none; }
+            .header { top: 0; padding: 12px 0; background: var(--vip-dark-green); }
+            .header.scrolled { padding: 10px 0; }
+            .menu-btn { display: block; color: var(--vip-gold); z-index: 1005; position: relative; }
+            
+            /* Slide-in Mobile Menu */
+            .nav-links {
+                position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
+                background: #021a0f; flex-direction: column; justify-content: flex-start;
+                padding-top: 80px; gap: 15px; box-shadow: -5px 0 25px rgba(0,0,0,0.8);
+                border-left: 1px solid rgba(241, 196, 15, 0.2); transition: right 0.4s ease; z-index: 1000;
+            }
+            .nav-links.active { right: 0; }
+            .nav-links li { width: 100%; text-align: center; }
+            .nav-links a { font-size: 1.1rem; padding: 12px 0; display: block; }
+            .nav-links .btn-vip { margin-top: 15px; width: 80%; justify-content: center; padding: 12px; }
+            
+            .story-image { order: -1; } /* Puts image above text on mobile */
+            .stats-banner { padding: 0; }
+            .stats-container { border-radius: 0; flex-direction: column; gap: 30px; padding: 40px 20px;}
+            .stat-item { width: 100%; justify-content: flex-start; padding-left: 15%; }
+            
+            .footer-bottom { flex-direction: column; gap: 10px; justify-content: center; }
+            .fab-support { width: 50px; height: 50px; font-size: 26px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span><i class="fas fa-phone-alt"></i> <a href="tel:+94112118118">+94 11 2 118 118</a></span>
+                <span><i class="fas fa-envelope"></i> <a href="mailto:info@leisuresportsholdings.com">info@leisuresportsholdings.com</a></span>
+            </div>
+            <div class="top-bar-right">
+                <span><a href="#"><i class="fas fa-shield-alt"></i> Responsible Gaming</a></span>
+                <span><i class="fas fa-globe"></i> English</span>
+            </div>
+        </div>
+    </div>
+
+    <header class="header" id="header">
+        <div class="container">
+            <a href="index.html" class="logo-wrapper">
+                <img src="https://leisuresportsholdings.com/images/logolg.png" alt="Leisure Sports Logo">
+            </a>
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="coverage.html">Coverage</a></li>
+                    <li><a href="providers.html">Providers</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li class="nav-btn"><button class="btn-vip">Login VIP</button></li>
+                </ul>
+            </nav>
+            <button class="menu-btn" id="menu-btn"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content reveal">
+                <h1>Our <span>Story</span></h1>
+                <p>Discover the legacy behind Sri Lanka's finest sportsbook experience.</p>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a> <i class="fas fa-angle-right" style="margin-top: 2px;"></i> <span>About Us</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="story-section">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-content reveal">
+                    <h2>The Journey of <br><span>Leisure Sports</span></h2>
+                    <div class="line"></div>
+                    <p><strong>Royal Gaming (PVT) LTD</strong>, operating under the renowned brand <span class="highlight">"Leisure Sports,"</span> launched its operations in 2019 by acquiring a significant portion of the business from one of the only two live Sportsbook operators in Sri Lanka.</p>
+                    <p>Since our inception, we have fully embraced a customer-first philosophy. Through exciting community initiatives like the "A Winner from a Loser - Cash Back Raffle Draw", "Winner to Win a Beer", and our regular "Customer Meet Ups", Leisure Sports has rapidly gained immense acceptance among the majority of elite punters.</p>
+                    <p>We have cultivated a distinctive flavor and culture deliberately designed to challenge the traditional bookie format—bringing you into a sophisticated space filled with true excitement and joy to follow your favorite sport.</p>
+                </div>
+                <div class="story-image reveal" style="transition-delay: 0.2s;">
+                    <img src="https://images.unsplash.com/photo-1518091043644-c1d44570a2c9?q=80&w=1000&auto=format&fit=crop" alt="Leisure Sports Premium Experience">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mv-section">
+        <div class="container">
+            <div class="mv-grid">
+                <div class="mv-card reveal">
+                    <div class="mv-icon"><i class="fas fa-bullseye"></i></div>
+                    <h3>Our Mission</h3>
+                    <p>To deliver an unparalleled, premium sports entertainment experience. We are committed to offering competitive odds, comprehensive global market coverage, and a highly secure, responsible gaming environment that prioritizes customer satisfaction above all else.</p>
+                </div>
+                <div class="mv-card reveal" style="transition-delay: 0.2s;">
+                    <div class="mv-icon"><i class="fas fa-eye"></i></div>
+                    <h3>Our Vision</h3>
+                    <p>To establish ourselves as the best and most customer-friendly Sportsbook Operator in Sri Lanka and across the Asian Sub-Continent. We aim to revolutionize the betting industry by merging traditional excitement with modern, transparent, and rewarding community practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-banner">
+        <div class="stats-container reveal">
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+                <div class="stat-info">
+                    <span class="stat-number"><span class="counter" data-target="75">0</span>+</span>
+                    <span class="stat-text">Years of Excellence</span>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-building"></i></div>
+                <div class="stat-info">
+                    <span class="stat-number"><span class="counter" data-target="15">0</span>+</span>
+                    <span class="stat-text">Companies</span>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                <div class="stat-info">
+                    <span class="stat-number"><span class="counter" data-target="2000">0</span>+</span>
+                    <span class="stat-text">Employees</span>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-globe"></i></div>
+                <div class="stat-info">
+                    <span class="stat-number" style="font-size: 1.5rem;">Multiple</span>
+                    <span class="stat-text">Industries</span>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-shield-alt"></i></div>
+                <div class="stat-info">
+                    <span class="stat-number"><span class="counter" data-target="3">0</span></span>
+                    <span class="stat-text">Generations</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="sub-title">Why Choose Us</span>
+                <h2>Our Core Values</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card reveal" style="transition-delay: 0.1s;">
+                    <div class="value-icon"><i class="fas fa-handshake"></i></div>
+                    <h3>Customer First</h3>
+                    <p>We treat our members like VIPs. Our operations, rewards, and support are entirely tailored to provide you with maximum value and satisfaction.</p>
+                </div>
+                <div class="value-card reveal" style="transition-delay: 0.2s;">
+                    <div class="value-icon"><i class="fas fa-shield-check"></i></div>
+                    <h3>Integrity & Trust</h3>
+                    <p>Operating with complete transparency, we ensure fair play, responsible gaming, and secure transactions for every member of our community.</p>
+                </div>
+                <div class="value-card reveal" style="transition-delay: 0.3s;">
+                    <div class="value-icon"><i class="fas fa-crown"></i></div>
+                    <h3>Premium Experience</h3>
+                    <p>From the ambiance of our meet-ups to the quality of our digital platform, we deliver a luxurious, elite sports betting environment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about reveal">
+                    <div class="footer-logo">
+                        <img src="https://leisuresportsholdings.com/images/logolg.png" alt="Leisure Sports">
+                    </div>
+                    <p>Leisure Sports aims to establish itself as the most customer-friendly operator in Sri Lanka. Customers at Leisure, Enjoy Sports at Pleasure.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="reveal" style="transition-delay: 0.1s;">
+                    <h4 class="footer-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="index.html#coverage"><i class="fas fa-chevron-right"></i> Global Markets</a></li>
+                        <li><a href="index.html#providers"><i class="fas fa-chevron-right"></i> Our Providers</a></li>
+                    </ul>
+                </div>
+
+                <div class="reveal" style="transition-delay: 0.2s;">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> 77 Chatham St, Colombo</a></li>
+                        <li><a href="tel:+94112118118"><i class="fas fa-phone"></i> +94 11 2 118 118</a></li>
+                        <li><a href="mailto:info@leisuresportsholdings.com"><i class="fas fa-envelope"></i> Email Support</a></li>
+                    </ul>
+                </div>
+
+                <div class="newsletter reveal" style="transition-delay: 0.3s;">
+                    <h4 class="footer-title">VIP Newsletter</h4>
+                    <p>Subscribe for exclusive odds, promotions, and cash-back event invites.</p>
+                    
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit">Join</button>
+                    </form>
+                    
+                    <h4 class="footer-title" style="font-size: 0.9rem; margin-top: 20px; margin-bottom: 10px;">Secure Payments</h4>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa" title="Visa"></i>
+                        <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                        <i class="fab fa-cc-paypal" title="PayPal"></i>
+                        <i class="fab fa-bitcoin" title="Crypto"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; <span id="year"></span> Leisure Sports Holdings (PVT) Ltd. All Rights Reserved.</div>
+                <div style="display: flex; gap: 20px;">
+                    <a href="#" style="color: #94a3b8; transition: color 0.3s;" onmouseover="this.style.color='#f1c40f'" onmouseout="this.style.color='#94a3b8'">Privacy Policy</a>
+                    <a href="#" style="color: #94a3b8; transition: color 0.3s;" onmouseover="this.style.color='#f1c40f'" onmouseout="this.style.color='#94a3b8'">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="fab-container">
+        <button id="scrollTopBtn" class="scroll-top-btn" title="Go to top">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+        <a href="https://wa.me/94112118118" target="_blank" class="fab-support" title="VIP Support via WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script>
+        // 1. Dynamic Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // 2. Sticky Header Logic
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 35) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // 3. Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const navLinks = document.getElementById('nav-links');
+        const icon = menuBtn.querySelector('i');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            if(navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // 4. Scroll Reveal Animations
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.reveal').forEach((el) => { observer.observe(el); });
+
+        // 5. STATS NUMBER COUNTER ANIMATION
+        const counters = document.querySelectorAll('.counter');
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                counter.innerText = '0';
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText.replace(/,/g, '');
+                    const inc = target / 60; 
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc).toLocaleString();
+                        setTimeout(updateCount, 35);
+                    } else {
+                        counter.innerText = target.toLocaleString();
+                    }
+                };
+                updateCount();
+            });
+        };
+
+        const statsSection = document.querySelector('.stats-container');
+        if (statsSection) {
+            const statsObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            statsObserver.observe(statsSection);
+        }
+
+        // 6. Scroll To Top Logic
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) { 
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
